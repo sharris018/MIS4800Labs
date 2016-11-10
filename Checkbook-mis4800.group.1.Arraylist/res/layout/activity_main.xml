@@ -9,29 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mis4800.group1.checkbook_android.MainActivity" >
 
-    <EditText
-        android:id="@+id/txtAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="6"
-        android:inputType="numberSigned"
-        android:textColor="#212121" >
-
-        <requestFocus />
-    </EditText><Button android:id="@+id/btnAdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignBottom="@id/txtAmount" android:layout_alignParentRight="false" android:layout_alignParentTop="false" android:layout_marginRight="45dp" android:layout_toRightOf="@id/txtAmount" android:text="@string/add" android:textColor="#ffffff"/>
-
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/btnAdd"
-        android:layout_alignParentRight="true"
-        android:text="@string/delete"
-        android:textColor="#212121"
-        android:visibility="invisible" />
-
     <TextView
         android:id="@+id/tvBalance"
         android:layout_width="wrap_content"
@@ -44,13 +21,82 @@
         android:textColor="#00BCD4"
         android:visibility="visible" />
 
+    <EditText
+        android:id="@+id/txtAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="100dp"
+        android:ems="6"
+        android:hint="Amount"
+        android:inputType="numberSigned"
+        android:textColor="#212121" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnAdd"
+        android:layout_alignTop="@+id/btnAdd"
+        android:layout_toRightOf="@+id/tvBalance"
+        android:text="@string/delete"
+        android:textColor="#212121"
+        android:visibility="invisible" />
+
+    <EditText
+        android:id="@+id/txtPayee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtAmount"
+        android:layout_alignParentTop="false"
+        android:layout_alignRight="@+id/btnAdd"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Pay to the order of"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/txtMemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnAdd"
+        android:layout_alignLeft="@+id/txtAmount"
+        android:layout_alignRight="@+id/btnDelete"
+        android:ems="10"
+        android:hint="Memo"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtAmount"
+        android:layout_toRightOf="@+id/txtAmount"
+        android:text="@string/add"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtPayee"
+        android:layout_alignLeft="@+id/btnDelete"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date" />
+
     <ListView
         android:id="@+id/lstTransactions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/tvBalance"
-        android:layout_below="@id/txtAmount"
-        android:cacheColorHint="@color/button" >
+        android:layout_above="@+id/tvBalance"
+        android:layout_alignLeft="@+id/txtAmount"
+        android:layout_alignRight="@+id/btnDelete"
+        android:layout_below="@+id/txtAmount" >
 
     </ListView>
 
