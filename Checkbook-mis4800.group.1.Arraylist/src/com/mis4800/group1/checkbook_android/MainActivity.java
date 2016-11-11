@@ -26,6 +26,8 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 	TextView tvBalance;
 	ListView lstTransactions;
 	EditText txtAmount;
+	EditText txtPayee;
+	EditText txtMemo;
 	// The Adapter is an adapter for Transactions, not Double
 	ArrayAdapter<Transaction> adapter;
 	// Create an array of transactions
@@ -40,6 +42,8 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 
 		tvBalance = (TextView) findViewById(R.id.tvBalance);
 		txtAmount = (EditText) findViewById(R.id.txtAmount);
+		txtPayee =  (EditText) findViewById(R.id.txtPayee);
+		txtMemo =   (EditText) findViewById(R.id.txtMemo); 
 
 		btnAdd = (Button) findViewById(R.id.btnAdd);
 		btnDelete = (Button) findViewById(R.id.btnDelete);
@@ -89,11 +93,13 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		switch (v.getId()) {
 		case R.id.btnAdd:
 			double amount = Double.parseDouble(txtAmount.getText().toString());
+			 String payee = txtPayee.getText().toString();
+			 String memo = txtMemo.getText().toString();
 			
 			// First we need to create an instance of the transaction object from stuff the user has put in
 			// Since we only have the amount, lets put some default values for now.
 			// new Date() returns today's date.
-			Transaction newtransaction = new Transaction(new Date(), "blank", amount, "memo");
+			Transaction newtransaction = new Transaction(new Date(), payee, amount, memo);
 			// Check the text on the button - if Add, perform the Add function
 			if (btnAdd.getText().equals("Add")) {
 				// Add the amount to the array

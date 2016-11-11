@@ -101,7 +101,7 @@ public class Transaction {
 		return currencyformat.format(amount);
 
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -109,7 +109,7 @@ public class Transaction {
 	 */
 	@Override
 	public String toString() {
-		return " Payee: " + payee + "\n Memo: " + memo + "\n Date: " + getDateString()
+		return " Payee: " + getPayee() + "\n Memo: " + getMemo() + "\n Date: " + getDateString()
 				+ "\n Amount: " + getFormattedAmount() + "";
 	}
 
