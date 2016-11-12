@@ -83,8 +83,8 @@
         android:id="@+id/txtDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtPayee"
-        android:layout_alignLeft="@+id/btnDelete"
+        android:layout_alignBaseline="@id/txtPayee"
+        android:layout_toRightOf="@id/txtPayee"
         android:ems="10"
         android:hint="Date"
         android:inputType="date" />
