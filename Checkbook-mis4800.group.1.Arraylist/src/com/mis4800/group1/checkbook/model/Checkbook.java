@@ -1,6 +1,8 @@
 package com.mis4800.group1.checkbook.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Checkbook {
@@ -77,7 +79,55 @@ public class Checkbook {
 	public void setOwner(String owner) {
 		this.owner = owner;
 	}
-	
-	
+	/**
+	 * Sort type is 0 for date 1 for amount 2 for payee default for memo 
+	 * @param sortType
+	 */
+	public void sort(int sortType) {
+		switch(sortType) {
+		case 0: Collections.sort(transactions, new Comparator<Transaction>() {
+
+			@Override
+			public int compare(Transaction lhs, Transaction rhs) {
+				// TODO Auto-generated method stub
+				return lhs.compareByDate(rhs);
+			}
+		});
+		break;
+		
+		case 1:
+			Collections.sort(transactions, new Comparator<Transaction>() {
+
+				@Override
+				public int compare(Transaction lhs, Transaction rhs) {
+					// TODO Auto-generated method stub
+					return lhs.compareByAmount(rhs);
+				}
+			});
+			break;
+			
+		case 2:
+			Collections.sort(transactions, new Comparator<Transaction>() {
+
+				@Override
+				public int compare(Transaction lhs, Transaction rhs) {
+					// TODO Auto-generated method stub
+					return lhs.compareByPayee(rhs);
+				}
+			});
+			break;
+			
+		default:
+			Collections.sort(transactions, new Comparator<Transaction>() {
+
+				@Override
+				public int compare(Transaction lhs, Transaction rhs) {
+					// TODO Auto-generated method stub
+					return lhs.compareByMemo(rhs);
+				}
+			});
+			break;
+		}
+	}
 
 }

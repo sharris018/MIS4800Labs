@@ -1,103 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/mybackgroundcolor"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mis4800.group1.checkbook_android.MainActivity" >
+	xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+	android:layout_height="match_parent" android:background="@color/mybackgroundcolor"
+	android:paddingBottom="@dimen/activity_vertical_margin"
+	android:paddingLeft="@dimen/activity_horizontal_margin"
+	android:paddingRight="@dimen/activity_horizontal_margin"
+	android:paddingTop="@dimen/activity_vertical_margin" tools:context="com.mis4800.group1.checkbook_android.MainActivity"
+	tools:ignore="HardcodedText,RtlHardcoded">
 
-    <TextView
-        android:id="@+id/tvBalance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp"
-        android:text="Current Balance is: "
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#00BCD4"
-        android:visibility="visible" />
+	<TextView android:id="@+id/tvBalance" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true" android:layout_marginBottom="0dp"
+		android:text="Current Balance is: " android:textAppearance="?android:attr/textAppearanceMedium"
+		android:textColor="#00BCD4" android:visibility="visible" tools:ignore="HardcodedText" />
 
-    <EditText
-        android:id="@+id/txtAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="100dp"
-        android:ems="6"
-        android:hint="Amount"
-        android:inputType="numberSigned"
-        android:textColor="#212121" >
+	<EditText
+	    android:id="@+id/txtAmount"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignLeft="@+id/lstTransactions"
+	    android:layout_alignParentTop="true"
+	    android:layout_marginTop="100dp"
+	    android:ems="6"
+	    android:hint="Amount"
+	    android:inputType="numberSigned"
+	    android:textColor="#212121" >
 
-        <requestFocus />
-    </EditText>
+		<requestFocus />
+	</EditText>
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btnAdd"
-        android:layout_alignTop="@+id/btnAdd"
-        android:layout_toRightOf="@+id/tvBalance"
-        android:text="@string/delete"
-        android:textColor="#212121"
-        android:visibility="invisible" />
+	<EditText
+	    android:id="@+id/txtPayee"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentEnd="false"
+	    android:layout_alignParentStart="true"
+	    android:layout_alignWithParentIfMissing="false"
+	    android:ems="8"
+	    android:hint="Pay to the order of"
+	    android:inputType="text" />
 
-    <EditText
-        android:id="@+id/txtPayee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtAmount"
-        android:layout_alignParentTop="false"
-        android:layout_alignRight="@+id/btnAdd"
-        android:layout_marginTop="5dp"
-        android:ems="10"
-        android:hint="Pay to the order of"
-        android:inputType="text" />
+	<EditText
+	    android:id="@+id/txtMemo"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/btnAdd"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+	    android:ems="10"
+	    android:hint="Memo"
+	    android:inputType="text" />
 
-    <EditText
-        android:id="@+id/txtMemo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnAdd"
-        android:layout_alignLeft="@+id/txtAmount"
-        android:layout_alignRight="@+id/btnDelete"
-        android:ems="10"
-        android:hint="Memo"
-        android:inputType="text" />
+	<Button android:id="@+id/btnAdd" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignBottom="@+id/txtAmount"
+		android:layout_toRightOf="@+id/txtAmount" android:text="@string/add"
+		android:textColor="#212121" />
 
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtAmount"
-        android:layout_toRightOf="@+id/txtAmount"
-        android:text="@string/add"
-        android:textColor="#ffffff" />
+	<EditText
+	    android:id="@+id/txtDate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/txtPayee"
+	    android:layout_alignParentEnd="true"
+	    android:layout_alignParentStart="false"
+	    android:layout_alignWithParentIfMissing="false"
+	    android:ems="5"
+	    android:hint="Date"
+	    android:inputType="date" />
 
-    <EditText
-        android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtPayee"
-        android:layout_alignLeft="@+id/btnDelete"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="date" />
+	<ListView
+	    android:id="@+id/lstTransactions"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/tvBalance"
+	    android:layout_below="@+id/txtAmount" />
 
-    <ListView
-        android:id="@+id/lstTransactions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tvBalance"
-        android:layout_alignLeft="@+id/txtAmount"
-        android:layout_alignRight="@+id/btnDelete"
-        android:layout_below="@+id/txtAmount" >
+	<Button android:id="@+id/btnDelete" android:layout_width="wrap_content"
+		android:layout_height="wrap_content" android:layout_alignBaseline="@id/btnAdd"
+		android:layout_alignBottom="@+id/btnAdd"
+		android:layout_alignParentRight="true" android:layout_marginBottom="17dp"
+		android:text="@string/delete" android:textColor="#212121"
+		android:visibility="invisible" />
 
-    </ListView>
+
 
 </RelativeLayout>

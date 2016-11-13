@@ -7,5 +7,9 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/action_settings"/>
+    <item android:id="@+id/sortMemo" android:title="@string/sortMemo"></item>
+    <item android:id="@+id/sortDate" android:title="@string/sortDate"></item>
+    <item android:id="@+id/sortPayee" android:title="@string/sortPayee"></item>
+    <item android:id="@+id/sortAmount" android:title="@string/sortAmount"></item>
 
 </menu>

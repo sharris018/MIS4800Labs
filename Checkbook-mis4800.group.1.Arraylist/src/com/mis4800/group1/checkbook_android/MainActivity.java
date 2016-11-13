@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.mis4800.group1.checkbook.db.CheckbookDatabase;
 import com.mis4800.group1.checkbook.model.Checkbook;
 import com.mis4800.group1.checkbook.model.Transaction;
 
@@ -22,28 +23,57 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener, OnItemClickListener {
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mydatabase.save(mycheckbook);
+	}
+
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onResume()
+	 */
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mydatabase.retrieve(mycheckbook);
+		tvBalance.setText("Current Balance is: " + mycheckbook.balance());
+		
+	}
+
+
 	Button btnAdd, btnDelete;
 	TextView tvBalance;
 	ListView lstTransactions;
-	EditText txtAmount;
-	EditText txtPayee;
-	EditText txtMemo;
+	EditText txtAmount, txtDate, txtMemo, txtPayee;
+
 	// The Adapter is an adapter for Transactions, not Double
 	ArrayAdapter<Transaction> adapter;
 	// Create an array of transactions
 	// With Objects, we don't need an array or arraylist, but just a checkbook.
-	Checkbook mycheckbook; 
-		
+	Checkbook mycheckbook;
+	CheckbookDatabase mydatabase;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main); // connect controller to the view 
+		setContentView(R.layout.activity_main); // connect controller to the
+												// view
 		mycheckbook = new Checkbook("U1CU", "Group 1");
+
+		// Create the database
+		mydatabase = new CheckbookDatabase(this);
 
 		tvBalance = (TextView) findViewById(R.id.tvBalance);
 		txtAmount = (EditText) findViewById(R.id.txtAmount);
-		txtPayee =  (EditText) findViewById(R.id.txtPayee);
-		txtMemo =   (EditText) findViewById(R.id.txtMemo); 
+		txtDate = (EditText) findViewById(R.id.txtDate);
+		txtPayee = (EditText) findViewById(R.id.txtPayee);
+		txtMemo = (EditText) findViewById(R.id.txtMemo);
 
 		btnAdd = (Button) findViewById(R.id.btnAdd);
 		btnDelete = (Button) findViewById(R.id.btnDelete);
@@ -52,19 +82,15 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 
 		lstTransactions = (ListView) findViewById(R.id.lstTransactions);
 
-		adapter = new ArrayAdapter<Transaction>(this,
-				android.R.layout.simple_list_item_1,
+		adapter = new ArrayAdapter<Transaction>(this, android.R.layout.simple_list_item_1,
 				mycheckbook.getTransactions());
 
 		lstTransactions.setAdapter(adapter);
 		lstTransactions.setOnItemClickListener(this);
-
 	}
 
+
 	private int positionToUpdate = -1;
-
-
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,6 +108,21 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
+		} else if (id == R.id.sortDate) {
+			mycheckbook.sort(0);
+			adapter.notifyDataSetChanged();
+			return true;
+		} else if (id == R.id.sortAmount) {
+			mycheckbook.sort(1);
+			adapter.notifyDataSetChanged();
+			return true;
+		} else if (id == R.id.sortPayee) {
+			mycheckbook.sort(2);
+			adapter.notifyDataSetChanged();
+			return true;
+		} else if (id == R.id.sortMemo) {
+			adapter.notifyDataSetChanged();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -93,28 +134,32 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		switch (v.getId()) {
 		case R.id.btnAdd:
 			double amount = Double.parseDouble(txtAmount.getText().toString());
-			 String payee = txtPayee.getText().toString();
-			 String memo = txtMemo.getText().toString();
-			
-			// First we need to create an instance of the transaction object from stuff the user has put in
-			// Since we only have the amount, lets put some default values for now.
+			String payee = txtPayee.getText().toString();
+			String memo = txtMemo.getText().toString();
+			String tdate = String.format(txtDate.getText().toString());
+			// First we need to create an instance of the transaction object
+			// from stuff the user has put in
+			// Since we only have the amount, lets put some default values for
+			// now.
 			// new Date() returns today's date.
 			Transaction newtransaction = new Transaction(new Date(), payee, amount, memo);
 			// Check the text on the button - if Add, perform the Add function
 			if (btnAdd.getText().equals("Add")) {
 				// Add the amount to the array
-				// With the objects, we don't add a double to the arraylist, 
-				// but we add a transaction to the checkbook, exactly what you would expect
+				// With the objects, we don't add a double to the arraylist,
+				// but we add a transaction to the checkbook, exactly what you
+				// would expect
 				mycheckbook.addTransaction(newtransaction);
-			} else {  // Otherwise perform the update function
-				if(positionToUpdate < 0) return;
+			} else { // Otherwise perform the update function
+				if (positionToUpdate < 0)
+					return;
 				// Update the transaction using the saved positionToUpdate
 				// With objects, you call the updateTransaction method.
 				mycheckbook.updateTransaction(positionToUpdate, newtransaction);
 				// Turn back the text of the button
 				btnDelete.setVisibility(View.GONE);
 				btnAdd.setText("Add");
-				
+
 			}
 
 			adapter.notifyDataSetChanged();
@@ -133,11 +178,11 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 					btnDelete.setVisibility(View.GONE);
 				} else {
 					btnDelete.setVisibility(View.VISIBLE);
-					
+
 				}
 				break;
-				}
-			
+			}
+
 			// Remove the amount from the array
 			// Call array position and make sure position to update is -1.
 			if (positionToUpdate < 0)
@@ -149,6 +194,9 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 		}
 		// editText clears out after each enter, update or deletion.
 		txtAmount.setText("");
+		txtDate.setText("");
+		txtMemo.setText("");
+		txtPayee.setText("");
 
 		// Tell the adapter the data set has changed
 		adapter.notifyDataSetChanged();
@@ -161,18 +209,23 @@ public class MainActivity extends Activity implements OnClickListener, OnItemCli
 	@Override
 	public void onItemClick(AdapterView<?> listview, View itemview, int itemposition, long itemId) {
 		// Copy the data from the current position to the EditText
-		// Lets get the transaction from the current position from the list of transactions in the checkbook.
-		// Another option would have been to create a getTransaction(position) method in the CheckBook class
+		// Lets get the transaction from the current position from the list of
+		// transactions in the checkbook.
+		// Another option would have been to create a getTransaction(position)
+		// method in the CheckBook class
 		Transaction curt = mycheckbook.getTransactions().get(itemposition);
-		btnDelete.setVisibility(View.VISIBLE); 
-		// Using getFormattedAmount would cause a problem parsing the $ symbol out, so lets stay with Doubles
+		// Set delete button visibility
+		btnDelete.setVisibility(View.VISIBLE);
+		// Using getFormattedAmount would cause a problem parsing the $ symbol
+		// out, so lets stay with Doubles
 		// to put in the Amount field.
 		txtAmount.setText(curt.getAmount().toString());
 		// Change the button so the user knows we are updating
 		btnAdd.setText("Update");
 		// Save the itemposition so update can work
 		positionToUpdate = itemposition;
+		// Select items in list view
 		listview.isSelected();
-		
+
 	}
 }

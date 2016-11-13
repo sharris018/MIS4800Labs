@@ -113,4 +113,16 @@ public class Transaction {
 				+ "\n Amount: " + getFormattedAmount() + "";
 	}
 
-}
+	public int compareByDate(Transaction another) {
+		return tdate.compareTo(another.getTdate());
+	}
+	public int compareByAmount(Transaction another) {
+		return amount.compareTo(another.getAmount());
+	}
+	public int compareByMemo(Transaction another) {
+		return memo.compareTo(another.getMemo());
+	}
+	public int compareByPayee(Transaction another) {
+		return payee.compareTo(another.getPayee());
+	}
+	}
