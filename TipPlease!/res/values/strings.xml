@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tip Please!</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="bill">Bill</string>
+    <string name="totaltip">Total Tip</string>
+    <string name="tippercentage">Tip Percentage</string>
+    <string name="finaltotal">Final Total</string>
+    <string name="party">Number of Parties</string>
+    <string name="calculate">Calculate</string>
+    <string name="splitbill">Split Bill</string>
+    <string name="enter">Enter</string>
+    <string name="mainmenu">Main Menu</string>
+    <string name="enter2">Hit Enter To Calculate</string>
+    <string name="hit_enter_to_calculate">Hit Enter to Calculate</string>
+
+</resources>
