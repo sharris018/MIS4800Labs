@@ -16,5 +16,6 @@
     <string name="mainmenu">Main Menu</string>
     <string name="enter2">Hit Enter To Calculate</string>
     <string name="hit_enter_to_calculate">Hit Enter to Calculate</string>
+    <string name="singleEnter">Hit Enter to Calculate</string>
 
 </resources>

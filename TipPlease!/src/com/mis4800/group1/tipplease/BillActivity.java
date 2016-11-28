@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mis4800.group1.tipplease.model;
+package com.mis4800.group1.tipplease;
 
 /**
  * @author shone

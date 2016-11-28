@@ -1,6 +1,5 @@
-package com.mis4800.group1.tipplease.model;
+package com.mis4800.group1.tipplease;
 
-import com.mis4800.group1.tipplease.MainActivity;
 import com.mis4800.group1.tipplease.R;
 import com.mis4800.group1.tipplease.R.id;
 import com.mis4800.group1.tipplease.R.layout;
