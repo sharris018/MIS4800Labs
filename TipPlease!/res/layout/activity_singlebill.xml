@@ -20,30 +20,6 @@
         android:src="@drawable/logo"
         tools:ignore="ContentDescription" />
 
-    <EditText
-        android:id="@+id/txtItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="23dp"
-        android:ems="10"
-        android:hint="Item" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/txtPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtItem"
-        android:layout_below="@+id/txtItem"
-        android:layout_centerHorizontal="true"
-        android:ems="10"
-        android:hint="Price" />
-
     <TextView
         android:id="@+id/tvTip"
         android:layout_width="wrap_content"
@@ -51,7 +27,7 @@
         android:layout_alignLeft="@+id/txtPrice"
         android:layout_below="@+id/tvTotal"
         android:layout_marginTop="20dp"
-        android:text="Tip %: "
+        android:text="Total Tip:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -61,7 +37,7 @@
         android:layout_alignLeft="@+id/tvTip"
         android:layout_below="@+id/txtPrice"
         android:layout_marginTop="25dp"
-        android:text="Total:"
+        android:text="Grand Total:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -91,5 +67,24 @@
         android:layout_alignTop="@+id/tvTotal"
         android:layout_marginRight="36dp"
         android:ems="5" />
+
+    <EditText
+        android:id="@+id/txtPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:ems="10"
+        android:hint="Price" >
+
+        <requestFocus />
+    </EditText>
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/txtTotal"
+        android:layout_toLeftOf="@+id/txtTotal" />
 
 </RelativeLayout>
