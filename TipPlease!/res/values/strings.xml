@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Tip Please!</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="back">Back</string>
     <string name="bill">Bill</string>
@@ -17,5 +16,10 @@
     <string name="enter2">Hit Enter To Calculate</string>
     <string name="hit_enter_to_calculate">Hit Enter to Calculate</string>
     <string name="singleEnter">Hit Enter to Calculate</string>
+    
+    <string-array name="billoption">
+        <item >Single Bill</item>
+        <item >Multi Bill</item>
 
+    </string-array>
 </resources>
