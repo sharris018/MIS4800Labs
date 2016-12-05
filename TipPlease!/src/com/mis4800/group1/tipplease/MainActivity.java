@@ -10,31 +10,29 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
 	Button btnEnter;
-	Spinner billoption; 
+	Spinner billoption, tipoption;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		
-		// Grab the buttons 
-		
+
+		// Grab the buttons
+
 		btnEnter = (Button) findViewById(R.id.btnEnter);
-		
-		
-		// Grab spinner button 
-		
-		billoption = (Spinner) findViewById(R.id.billoption); 
-		
+
+		// Grab spinner button
+
+		billoption = (Spinner) findViewById(R.id.billoption);
 
 		// Set up something to happen when the button is clicked
 		btnEnter.setOnClickListener(this);
-		
+
 	}
 
 	@Override
@@ -61,23 +59,20 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
-		if (v.getId() == R.id.btnEnter) {
-			
-			 
-	        switch (billoption.getSelectedItemPosition()) {
-            case 0:
-                // Select the single bill option 
-            	
-                break;
-            case 1:
-                // Select the multiple bill option, this option splits the check 
-            	
-                break;
-	        }
-			
-			Intent mainIntent = new Intent(this, BillActivity.class);
-			startActivity(mainIntent);
+	       if (v.getId() == R.id.btnEnter) {
+	    	   switch(billoption.getSelectedItemPosition()) {
+	    	   case 0: 
+	    		   Intent mainIntent = new Intent(this, BillActivity.class);
+	               
+	               startActivity(mainIntent);
+	               break;
+	    	   case 1:
+	    		   Toast.makeText(this, "This has not been implemented yet!", Toast.LENGTH_LONG).show();
+	    		   break;
+	    	   }
+               
+}
 		
-	}}
+	}
 
 }

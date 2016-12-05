@@ -24,68 +24,50 @@
         android:id="@+id/tvTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtPrice"
-        android:layout_below="@+id/tvTotal"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/tipoption"
         android:layout_marginTop="20dp"
         android:text="Tip amount:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/txtTip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvTip"
-        android:layout_alignLeft="@+id/txtTotal"
-        android:ems="5" />
-
-    <EditText
-        android:id="@+id/txtTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvTotal"
-        android:layout_alignRight="@+id/btnEnter2"
-        android:ems="5" >
-
-        <requestFocus />
-    </EditText>
-
-    <Button
-        android:id="@+id/btnEnter2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="26dp"
-        android:minHeight="38dip"
-        android:minWidth="78dp"
-        android:text="@string/singleEnter" />
 
     <EditText
         android:id="@+id/txtPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/btnEnter2"
         android:layout_below="@+id/imageView1"
         android:ems="10"
-        android:hint="Price" />
+        android:hint="Price"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/btnEnter2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:minHeight="38dip"
+        android:minWidth="78dp"
+        android:text="@string/singleEnter" />
 
     <Spinner
         android:id="@+id/tipoption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtPrice"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:entries="@array/tipoption"
         android:spinnerMode="dropdown" />
 
-    <TextView
-        android:id="@+id/tvTotal"
+    <EditText
+        android:id="@+id/txtTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tipoption"
-        android:layout_marginTop="20dp"
-        android:layout_toLeftOf="@+id/btnEnter2"
-        android:text="Total:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignBottom="@+id/tvTip"
+        android:layout_alignRight="@+id/btnEnter2"
+        android:ems="5" />
 
 </RelativeLayout>
