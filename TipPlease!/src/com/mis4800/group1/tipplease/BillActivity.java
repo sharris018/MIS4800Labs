@@ -95,7 +95,7 @@ public class BillActivity extends Activity implements OnClickListener {
                 	double price = 0;
                 	price = Double.parseDouble(txtPrice.getText().toString());
                 	double tip = (price * tipused)/100; 
-                	txtTip.setText(String.valueOf(tip));
+                	txtTip.setText(String.format("%1$.2f", tip));
                 	
  	        }
 			
