@@ -58,21 +58,23 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
-	       if (v.getId() == R.id.btnEnter) {
-	    	   switch(billoption.getSelectedItemPosition()) {
-	    	   case 0: 
-	    		   Intent mainIntent = new Intent(this, BillActivity.class);
-	               
-	               startActivity(mainIntent);
-	               break;
-	    	   case 1:
-	    		   Toast.makeText(this, "This has not been implemented yet!", Toast.LENGTH_LONG).show();
-	    		   break;
-	    	   }
-               
-}
-		
+
+		if (v.getId() == R.id.btnEnter) {
+			switch (billoption.getSelectedItemPosition()) {
+			case 0:
+				Intent mainIntent = new Intent(this, BillActivity.class);
+
+				startActivity(mainIntent);
+				break;
+			case 1:
+				Intent mainIntent1 = new Intent(this, MultiBill.class);
+				
+				startActivity(mainIntent1);
+				break;
+			}
+
+		}
+
 	}
 
 }

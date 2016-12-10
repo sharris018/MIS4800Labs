@@ -24,6 +24,9 @@
         </activity>
         <activity android:name="BillActivity">
         </activity>
+        <activity android:name="MultiBill">
+            <intent-filter></intent-filter>
+        </activity>
     </application>
 
 </manifest>
