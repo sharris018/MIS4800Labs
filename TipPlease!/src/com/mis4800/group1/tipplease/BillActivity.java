@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 public class BillActivity extends Activity implements OnClickListener {
 
+
 	Button btnEnter2;
 	EditText txtItem, txtTotal, txtTip, txtPrice;
 	TextView tvTip, tvTotal;
@@ -32,7 +33,7 @@ public class BillActivity extends Activity implements OnClickListener {
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		// initializing the activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_singlebill);
 
@@ -60,7 +61,6 @@ public class BillActivity extends Activity implements OnClickListener {
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
 		getMenuInflater().inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -72,7 +72,7 @@ public class BillActivity extends Activity implements OnClickListener {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
+		
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
@@ -82,13 +82,13 @@ public class BillActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		if (v.getId() == R.id.btnEnter2) {
 			double[] tips = { 0, 10.0, 15.0, 18.0, 20.0, 25.0 }; // Change this
 			// to what
 			// you have
 			// in your
-			// tipoption
+			// tip option
 			// spinner
 
 			int selectedPosition = tipoption.getSelectedItemPosition();
@@ -101,6 +101,8 @@ public class BillActivity extends Activity implements OnClickListener {
 				double tipused = tips[selectedPosition];
 				double price = 0;
 				price = Double.parseDouble(txtPrice.getText().toString());
+				
+				// Calculating the price of your bill
 				double tip = (price * tipused) / 100;
 				txtTip.setText(String.format("%1$.2f", tip));
 

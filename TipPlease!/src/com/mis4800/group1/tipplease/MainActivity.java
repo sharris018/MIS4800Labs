@@ -57,7 +57,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		// a loop set up to let you choose between 
+		// a multiple bill or individual bill
+		// grabbing the class that is chosen
 
 		if (v.getId() == R.id.btnEnter) {
 			switch (billoption.getSelectedItemPosition()) {

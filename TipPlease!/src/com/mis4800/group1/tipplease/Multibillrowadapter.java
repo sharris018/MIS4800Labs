@@ -13,7 +13,7 @@ public class Multibillrowadapter extends ArrayAdapter<Party> {
 
 	public Multibillrowadapter(Context context, int resource, List<Party> objects) {
 		super(context, resource, objects);
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	/* (non-Javadoc)
@@ -21,7 +21,7 @@ public class Multibillrowadapter extends ArrayAdapter<Party> {
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+		// here we will make changed to the convert view
 		View v = convertView;
 		if (v == null) {
 			LayoutInflater vi;

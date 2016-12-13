@@ -23,12 +23,14 @@ public class MultiBill extends Activity implements OnClickListener {
 	Spinner tipoption1;
 	ListView partylistview;
 	
+	// adapter for multibill 
 	Multibillrowadapter adapter;
+	
+	// list for number of parties
 	List<Party> myParties;
 
 
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.multibill);
 		// Grab the buttons 
@@ -51,7 +53,7 @@ public class MultiBill extends Activity implements OnClickListener {
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
+		
 		getMenuInflater().inflate(R.menu.main, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -61,7 +63,7 @@ public class MultiBill extends Activity implements OnClickListener {
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
+		
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
@@ -71,9 +73,11 @@ public class MultiBill extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		// loop giving the user options 
+		// to change the tip percentage
 		if (v.getId() == R.id.btnCalculate) {
-			double[] tips = {0, 10.0, 15.0, 18.0, 20.0, 25.0}; // Change this to what you have in your tipoption1 spinner
+			double[] tips = {0, 10.0, 15.0, 18.0, 20.0, 25.0}; 
+			// Change this to what you have in your tipoption1 spinner
 
 			int selectedPosition = tipoption1.getSelectedItemPosition();
 			switch (selectedPosition) {
